@@ -160,3 +160,11 @@ function printResults(configuration)
     print(configuration+" app built at path: "+FILE.join("Build", configuration, "Archipel"));
     print("----------------------------");
 }
+
+
+task ("cucumber", ["debug"], function()
+{
+	var outfile = FILE.join("Build", "Debug", "test", "cucumber_result.html");
+    OS.system(["cucumber", "--format", "html", "--out", outfile]);
+    OS.system(["open", outfile]);
+});
